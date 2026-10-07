@@ -111,7 +111,7 @@ export const products = [
     ],
     link: "https://github.com/ducanh8888/agent_runtime",
     linkLabel: "GitHub repository",
-    note: "Claude remains the orchestrator; AgentRT runs and manages persistent worker sessions. AgentRT is an open-source project maintained by the team behind HTL 16666.",
+    note: "Claude remains the orchestrator; AgentRT runs and manages persistent worker sessions. AgentRT is developed and maintained by HTL 16666.",
   },
 ] as const;
 
