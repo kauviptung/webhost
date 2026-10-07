@@ -1,4 +1,5 @@
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
+import { nitro } from "nitro/vite";
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
 import {
@@ -20,6 +21,11 @@ const QUANTA_ICONS_SHIM = fileURLToPath(
 
 export default defineConfig(({ command, mode }) => {
   const designInspectorEnabled = process.env.HF_DESIGN_INSPECTOR === "1" || mode === "design";
+  // Vercel sets VERCEL=1 during builds (dashboard CI and `vercel build` CLI).
+  // DEPLOY_TARGET=vercel forces the same path for a local dry run.
+  // With nitro() registered the server bundle is compiled for Node and emitted
+  // as `.vercel/output` (Build Output API) instead of a workerd Worker bundle.
+  const forVercel = process.env.VERCEL === "1" || process.env.DEPLOY_TARGET === "vercel";
 
   return {
     // fsevents can miss edits under some setups (bun-launched dev, synced/virtual
@@ -32,11 +38,13 @@ export default defineConfig(({ command, mode }) => {
       tsconfigPaths: true,
       alias: [{ find: /^@higgsfield-ai\/icons(\/.*)?$/, replacement: QUANTA_ICONS_SHIM }],
     },
-    // The server bundle runs as a Cloudflare Worker — there is no node_modules
-    // at runtime. Vite's default SSR build leaves npm deps as bare external
-    // imports (h3, react, @tanstack/*, seroval, …), which resolve on a Node
-    // server but throw "No such module" in a Worker. Bundle them all in.
-    // (node: builtins stay external — nodejs_compat provides them.)
+    // Cloudflare Workers build only: the server bundle runs as a Worker with
+    // no node_modules at runtime. Vite's default SSR build leaves npm deps as
+    // bare external imports (h3, react, @tanstack/*, seroval, …), which resolve
+    // on a Node server but throw "No such module" in a Worker. Bundle them all
+    // in. (node: builtins stay external — nodejs_compat provides them.)
+    // Skipped on Vercel: nitro builds the server for Node and traces externals
+    // into the function itself, so externalized deps resolve normally.
     // BUILD ONLY: `vite dev` SSR runs in Node where externalized deps are
     // correct — noExternal there makes the dev module runner evaluate CJS
     // deps (react) as ESM and crash with "module is not defined".
@@ -47,7 +55,7 @@ export default defineConfig(({ command, mode }) => {
       // both variants bundle their edge build (react-dom's web-streams server,
       // etc.) instead of the Node variant leaning on nodejs_compat shims.
       // `vite dev` SSR runs in Node, where default node resolution is correct.
-      ...(command === "build"
+      ...(command === "build" && !forVercel
         ? {
             target: "webworker" as const,
             resolve: {
@@ -58,9 +66,9 @@ export default defineConfig(({ command, mode }) => {
                 ...defaultServerConditions.filter((c) => c !== "node"),
               ],
             },
+            noExternal: true,
           }
         : {}),
-      noExternal: command === "build" ? true : undefined,
       // `cloudflare:workers` is a workerd runtime built-in that exposes the Worker
       // env / bindings (D1 `DB`, R2 `STORAGE`). Like node: builtins it must NOT be
       // bundled; the runtime provides it. (`ssr.external` is typed string[].)
@@ -100,6 +108,10 @@ export default defineConfig(({ command, mode }) => {
       tanstackStart({
         server: { entry: "server" },
       }),
+      // On Vercel (VERCEL=1) nitro compiles the server bundle into
+      // `.vercel/output` — Build Output API: static assets + a Vercel
+      // Function for SSR. Auto-detected by Vercel, no extra config needed.
+      ...(forVercel ? [nitro()] : []),
       higgsfieldDesignInspectorVitePlugin(designInspectorEnabled),
       react({
         babel: {

@@ -12,7 +12,7 @@ const appMeta = appMetaJson as AppMeta;
 function buildHead(meta: AppMeta) {
   const title = meta.og_title ?? "HTL 16666 Media";
   const description = meta.og_description ?? "HTL 16666 Media, a multimedia communications joint stock company in Hanoi, Vietnam.";
-  const siteUrl = "https://htl16666-media.higgsfield.app";
+  const siteUrl = ((import.meta.env.VITE_SITE_URL as string | undefined) ?? "https://htl16666-media.higgsfield.app").replace(/\/+$/, "");
   const ogImage = meta.og_image_url ? (meta.og_image_url.startsWith("/") ? siteUrl + meta.og_image_url : meta.og_image_url) : null;
   const favicon = meta.favicon_url ?? null;
   return {
