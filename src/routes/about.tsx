@@ -26,13 +26,36 @@ const facts = [
   ["Website", company.domain],
 ];
 
+const activities = [
+  ["1811","Printing"],["1812","Services related to printing"],
+  ["4610","Agents, brokers and auction activities, including sales agency and goods brokerage"],
+  ["4659","Wholesale of other machinery, equipment and parts, including sound, lighting and event equipment"],
+  ["4690","Non-specialized wholesale trade, subject to statutory exclusions"],
+  ["4773","Retail sale of other new goods in specialized stores, subject to statutory exclusions"],
+  ["4791","Retail sale via mail order houses or via Internet, subject to statutory exclusions"],
+  ["5911","Motion picture, video and television programme production activities"],
+  ["5912","Motion picture, video and television programme post-production activities"],
+  ["5913","Motion picture, video and television programme distribution activities"],
+  ["5920","Sound recording and music publishing activities"],
+  ["6612","Commodity contracts brokerage"],
+  ["7020","Management consultancy activities, excluding regulated finance, accounting and legal consultancy"],
+  ["7310","Advertising"],
+  ["7320","Market research and public opinion polling"],
+  ["7410","Specialized design activities"],
+  ["7420","Photographic activities, excluding press photography"],
+  ["7490","Other professional, scientific and technical activities, subject to statutory exclusions"],
+  ["8230","Organization of conventions, trade shows and trade promotion, subject to safety restrictions"],
+  ["8299","Other business support service activities n.e.c., subject to statutory exclusions"],
+  ["9000","Creative, arts and entertainment activities"],
+];
+
 function About() {
   return <main className="site-shell">
     <StructuredData json={organizationJsonLd} />
     <SiteHeader variant="solid" />
     <header className="page-head">
       <p className="eyebrow">About</p>
-      <h1>One company, fully on the record.</h1>
+      <h1>One company, on the record.</h1>
       <p>{company.brandName} is the public face of {company.legalName} — a Hanoi-based joint-stock company operating since {company.foundingDateDisplay}.</p>
     </header>
 
@@ -41,7 +64,7 @@ function About() {
         <h2>From communications work to software.</h2>
         <div>
           <p>The company was incorporated in May 2025 with advertising as its registered primary business line, within a broad communications scope: market research, consulting, events, trade promotion and creative design.</p>
-          <p>From the start, the operating model has been technology-forward: its public properties are built in-house on a self-hosted, server-rendered stack, its media is produced with AI generation tooling, and its codebase is developed with AI coding agents. The direction is software products for the same communications problems the company already understands.</p>
+          <p>Its public properties are built in-house — server-rendered React/TypeScript applications deployed on Vercel — and its media is produced with AI generation tooling. The codebase is developed with AI coding agents. The direction is software products for the same communications problems the company already understands.</p>
         </div>
       </div>
     </section>
@@ -49,10 +72,15 @@ function About() {
     <section className="registry section-pad" id="registry">
       <div className="registry-lead">
         <p className="eyebrow">Legal identity</p>
-        <h2>Verifiable by record.</h2>
+        <h2>Company record.</h2>
         <p>These details match the company's public tax registration record for tax code {company.taxId}.</p>
       </div>
       <dl>{facts.map(([l,v])=><div key={l}><dt>{l}</dt><dd>{v}</dd></div>)}</dl>
+    </section>
+
+    <section className="activities section-pad">
+      <div className="activities-head"><p className="eyebrow">Registered activities</p><h2>Full operating scope.</h2></div>
+      <div className="activity-grid">{activities.map(([c,a])=><div key={c}><span>{c}</span><p>{a}</p></div>)}</div>
     </section>
     <SiteFooter />
   </main>;

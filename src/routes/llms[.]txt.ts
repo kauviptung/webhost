@@ -25,7 +25,7 @@ const body = [
   "",
   ...products.flatMap((p) => [`- **${p.name}** (${p.status}) — ${p.problem}`]),
   "",
-  "AI context: the site film/media are AI-generated, the codebase is built with AI coding agents, and the company is evaluating language-model APIs (including the Claude API) for research, drafting and bilingual translation tooling.",
+  "The company uses AI tooling in media production and software development, and builds language-model tooling for internal communications workflows.",
   "",
   "## Pages",
   "",

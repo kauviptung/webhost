@@ -86,37 +86,31 @@ export const organizationJsonLd = JSON.stringify({
   ],
 });
 
-// Public product/activity description. Statuses are stated plainly — nothing
-// here claims customers, revenue, funding, partners or production usage.
+// Public product description. Facts only — no customers, revenue, funding,
+// partners or adoption claims.
 export const products = [
   {
-    name: "mr16666.com — self-hosted company platform",
-    status: "Live",
+    name: "Scroll-scrub site engine",
+    status: "In use on mr16666.com",
     problem:
-      "The company needs a verifiable public identity and a direct channel it controls end to end, rather than a borrowed social profile.",
-    user: "The company itself; it doubles as the reference implementation for client-facing brand sites.",
+      "Corporate communications pages rarely hold attention; a scroll-driven cinematic format carries a brand narrative better than a static brochure.",
+    user: "Communications and brand teams — including this company.",
     detail:
-      "A server-rendered React/TypeScript application on our own deployment pipeline, with brand media produced through AI generation tooling.",
-    ai: "The homepage film and cover media are AI-generated, and the codebase is built and maintained with AI coding agents.",
+      "A reusable runtime and content format that pairs a generated film with synchronized chapters. This website runs on it.",
+    ai: "Media assets are produced with AI generation tooling; the codebase is developed with AI coding agents.",
   },
+] as const;
+
+// Research and internal tooling — work in progress, not products.
+export const internalWork = [
   {
-    name: "Signal Sites — scroll-driven brand sites",
-    status: "In development",
+    name: "Language-model tooling for communications workflows",
+    status: "In exploration",
     problem:
-      "Corporate communications pages rarely hold attention; a scroll-scrubbed cinematic format carries a brand narrative better than a static brochure.",
-    user: "Communications and brand teams.",
+      "Research synthesis, drafting and Vietnamese–English translation are the most time-heavy parts of communications work.",
+    user: "The company's own communications workflow.",
     detail:
-      "A repeatable site format pairing a generated film with synchronized chapters. This website is the working reference implementation of the format.",
-    ai: "Generated media pipeline plus AI-assisted engineering.",
-  },
-  {
-    name: "Language-model tooling for communications work",
-    status: "Early exploration",
-    problem:
-      "Research synthesis, bilingual Vietnamese–English drafting and brief preparation are the most time-heavy parts of our communications work.",
-    user: "The company's own communications workflow first.",
-    detail:
-      "Internal tooling that applies language-model APIs to summarization, drafting and translation tasks.",
-    ai: "We are evaluating foundation-model APIs — including the Claude API — for these tasks. No production integration is claimed yet.",
+      "Internal tooling applying language-model APIs to summarization, drafting and translation tasks.",
+    ai: "We are evaluating several foundation-model APIs, including Claude, for these tasks.",
   },
 ] as const;

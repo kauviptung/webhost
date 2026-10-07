@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { landingContentSchema } from "@higgsfield/app-landing";
 import { landingContent } from "../src/landing-content";
 
@@ -20,15 +20,18 @@ describe("scroll-scrub website landing contract", () => {
     expect(landingContent.features.items).toHaveLength(3);
   });
 
-  test("keeps public landing and full app routes separate", () => {
-    const landingRoute = readFileSync(new URL("../src/routes/index.tsx", import.meta.url), "utf8");
-    const appRoute = readFileSync(new URL("../src/routes/app.tsx", import.meta.url), "utf8");
+  test("keeps the scaffold workspace off the public site", () => {
+    // "/app" renders the vendored demo workspace (fake metrics, demo feed) —
+    // it must not be a public route on the company site.
+    const appRouteExists = existsSync(new URL("../src/routes/app.tsx", import.meta.url));
+    expect(appRouteExists).toBe(false);
 
-    // scroll-scrub's home IS the site: "/" renders the journey instead of the
-    // stock LandingPage. Everything else about the split is unchanged.
+    const landingRoute = readFileSync(new URL("../src/routes/index.tsx", import.meta.url), "utf8");
     expect(landingRoute).toContain("ScrollScrub");
-    expect(appRoute).toContain('createFileRoute("/app")');
-    expect(appRoute).toContain("previewMode");
+    expect(landingRoute).not.toContain('"/app"');
+
+    const sitemap = readFileSync(new URL("../src/routes/sitemap[.]xml.ts", import.meta.url), "utf8");
+    expect(sitemap).not.toContain('"/app"');
   });
 
   test("ships the canonical generations workspace recipe", () => {
