@@ -74,8 +74,10 @@ export const organizationJsonLd = JSON.stringify({
   },
   areaServed: "Vietnam",
   knowsAbout: [
-    "Software development",
-    "Applied AI tooling",
+    "CRM software",
+    "Business operations software",
+    "Social media automation",
+    "Web platforms",
     "Advertising",
     "Communications",
     "Market research",
@@ -86,31 +88,62 @@ export const organizationJsonLd = JSON.stringify({
   ],
 });
 
-// Public product description. Facts only — no customers, revenue, funding,
-// partners or adoption claims.
-export const products = [
+// Public software taxonomy — the categories the company actually builds and
+// operates. Implementations, repositories, customer data and deployments are
+// private; descriptions stay at capability level by design.
+export const softwareAreas = [
   {
-    name: "Scroll-scrub site engine",
-    status: "In use on mr16666.com",
-    problem:
-      "Corporate communications pages rarely hold attention; a scroll-driven cinematic format carries a brand narrative better than a static brochure.",
-    user: "Communications and brand teams — including this company.",
-    detail:
-      "A reusable runtime and content format that pairs a generated film with synchronized chapters. This website runs on it.",
-    ai: "Media assets are produced with AI generation tooling; the codebase is developed with AI coding agents.",
+    name: "CRM & Business Operations",
+    status: "Active development; private deployments",
+    summary:
+      "Software for customer and contact management, sales workflows, operational records and business reporting.",
+    users: "Internal operations and business customers.",
+    capabilities: [
+      "Contact and account management",
+      "Sales and pipeline workflows",
+      "Operational records",
+      "Dashboards and reporting",
+      "Workflow automation",
+      "Business data integration",
+    ],
+  },
+  {
+    name: "Social Automation",
+    status: "Active development; private use",
+    summary:
+      "Automation software for social publishing workflows and content operations.",
+    users: "Content and communications operators.",
+    capabilities: [
+      "Social publishing workflows",
+      "Scheduling",
+      "Content operations",
+      "Multi-step operational workflows",
+      "Assisted content processing",
+    ],
+  },
+  {
+    name: "Web Platforms",
+    status: "In production; private deployments",
+    summary:
+      "Websites, web applications and interactive brand experiences — including this site, which runs on a scroll-scrub engine built in-house.",
+    users: "Clients and the company's own properties.",
+    capabilities: [
+      "Company and brand websites",
+      "Interactive web experiences",
+      "Reusable web infrastructure and components",
+      "Client and internal web systems",
+    ],
   },
 ] as const;
 
 // Research and internal tooling — work in progress, not products.
 export const internalWork = [
   {
-    name: "Language-model tooling for communications workflows",
+    name: "Language-model workflows",
     status: "In exploration",
-    problem:
-      "Research synthesis, drafting and Vietnamese–English translation are the most time-heavy parts of communications work.",
-    user: "The company's own communications workflow.",
-    detail:
-      "Internal tooling applying language-model APIs to summarization, drafting and translation tasks.",
-    ai: "We are evaluating several foundation-model APIs, including Claude, for these tasks.",
+    summary:
+      "Internal tooling applying language-model APIs to research synthesis, drafting and translation tasks inside communications work.",
+    users: "The company's own teams.",
+    capabilities: [],
   },
 ] as const;

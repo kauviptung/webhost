@@ -3,10 +3,10 @@ import { ScrollScrub } from "@/components/scroll-scrub/scroll-scrub";
 import { StructuredData } from "@/components/StructuredData";
 import { SiteFooter, SiteHeader } from "@/components/site-chrome";
 import { scrollScrubScenes, scrollScrubTheme } from "@/scroll-scrub-scenes";
-import { company, internalWork, organizationJsonLd, pageHead, products } from "@/company";
+import { company, organizationJsonLd, pageHead, softwareAreas } from "@/company";
 
 export const Route = createFileRoute("/")({
-  head: () => pageHead("/", company.brandName, "HTL 16666 Media is a communications and technology company in Hanoi — advertising, research and events, plus software products built in-house."),
+  head: () => pageHead("/", company.brandName, "HTL 16666 is a Hanoi-based communications and technology company building CRM, automation and web software alongside its communications business."),
   component: Index,
 });
 
@@ -25,14 +25,14 @@ function Index() {
 
     <section className="journey-shell">
       <ScrollScrub scenes={scrollScrubScenes} theme={scrollScrubTheme} />
-      <div className="journey-index" aria-hidden="true"><span>ENTITY</span><span>PRODUCT</span><span>INSIGHT</span><span>CREATIVE</span><span>CONTACT</span></div>
+      <div className="journey-index" aria-hidden="true"><span>ENTITY</span><span>SOFTWARE</span><span>COMMS</span><span>CREATIVE</span><span>CONTACT</span></div>
     </section>
 
     <section className="authority-strip" aria-label="Company summary">
-      <div><small>Tax code</small><strong>{company.taxId}</strong></div>
-      <div><small>Status</small><strong>{company.status}</strong></div>
-      <div><small>Primary line</small><strong>{company.primaryBusinessLine}</strong></div>
-      <div><small>Founded</small><strong>May 2025</strong></div>
+      <div><small>Founded</small><strong>2025</strong></div>
+      <div><small>Based in</small><strong>Hanoi</strong></div>
+      <div><small>Focus</small><strong>Software + Comms</strong></div>
+      <div><small>Email</small><strong>{company.email}</strong></div>
     </section>
 
     <section className="intro section-pad">
@@ -40,46 +40,39 @@ function Index() {
       <div className="intro-grid">
         <h2>A Hanoi company building its own software.</h2>
         <div>
-          <p>HTL 16666 is a communications and technology company based in Hanoi. The company runs an existing communications business — advertising, market research, consulting, events and creative design — and builds software products on top of it.</p>
-          <p>Everything public-facing is built in-house: this website is a server-rendered React/TypeScript application deployed on Vercel, and its film and artwork are produced with AI generation tooling.</p>
+          <p>HTL 16666 is a communications and technology company based in Hanoi. The company runs an existing communications business — advertising, market research, consulting, events and creative design — and builds software for business operations, communications and automation on top of it.</p>
+          <p>That software work is concrete: CRM and business-operations systems, social media automation, and web platforms — including this site, built and operated by the company itself.</p>
         </div>
       </div>
     </section>
 
-    <section className="capabilities section-pad" id="products">
-      <div className="section-top"><p className="eyebrow">Products</p><span>Software built in-house.</span></div>
+    <section className="capabilities section-pad" id="software">
+      <div className="section-top"><p className="eyebrow">Software</p><span>Systems the company builds and operates.</span></div>
       <div className="cap-list">
-        {products.map((p, i) => (
-          <article key={p.name}>
+        {softwareAreas.map((s, i) => (
+          <article key={s.name}>
             <span>{String(i + 1).padStart(2, "0")}</span>
-            <h3>{p.name}</h3>
-            <p>{p.problem} {p.status}.</p>
-          </article>
-        ))}
-        {internalWork.map((w, i) => (
-          <article key={w.name}>
-            <span>R&{String(i + 1)}</span>
-            <h3>{w.name}</h3>
-            <p>{w.problem} {w.status}.</p>
+            <h3>{s.name}</h3>
+            <p>{s.summary}</p>
           </article>
         ))}
       </div>
-      <p className="section-top section-top--end"><Link to="/products">Products and research</Link></p>
+      <p className="section-top section-top--end"><Link to="/products">Software and research</Link></p>
     </section>
 
-    <section className="intro section-pad" id="ai">
+    <section className="intro section-pad" id="how-we-work">
       <p className="eyebrow">How we work</p>
       <div className="intro-grid">
-        <h2>AI is part of the workflow.</h2>
+        <h2>Software development, automation, and AI where it helps.</h2>
         <div>
-          <p>We use AI tools for media production, software development and selected internal research workflows. The film in the hero above is AI-generated, and this codebase is developed with AI coding agents.</p>
-          <p>On the roadmap: language-model tooling for research synthesis, drafting and Vietnamese–English translation inside our communications work.</p>
+          <p>We use AI tools in software development, media production and selected automation and research workflows. The film in the hero above is AI-generated, and this site was built with AI coding agents.</p>
+          <p>Most software implementations are private because they operate on internal or customer business data.</p>
         </div>
       </div>
     </section>
 
-    <section className="capabilities section-pad" id="capabilities">
-      <div className="section-top"><p className="eyebrow">Capabilities</p><span>Communications remains our operating foundation.</span></div>
+    <section className="capabilities section-pad" id="communications">
+      <div className="section-top"><p className="eyebrow">Communications</p><span>The business the software serves.</span></div>
       <div className="cap-list">{capabilities.map(([n,t,b])=><article key={n}><span>{n}</span><h3>{t}</h3><p>{b}</p></article>)}</div>
     </section>
 
@@ -96,7 +89,7 @@ function Index() {
         <a className="phone" href={`tel:${company.phoneIntl.replace(/\s/g, "")}`}><span>Call</span><strong>{company.phoneIntl.replace("+84 ", "0")}</strong></a>
       </div>
       <div className="contact-address"><span>Business address</span><p>{company.businessAddress}</p></div>
-      <div className="contact-address"><span>Company profile</span><p><Link to="/about" style={{ color: "inherit" }}>Legal identity and company record</Link></p></div>
+      <div className="contact-address"><span>Company</span><p><Link to="/about" style={{ color: "inherit" }}>Company information</Link></p></div>
     </section>
 
     <SiteFooter />

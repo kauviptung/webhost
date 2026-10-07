@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-# External-verification check for the public site.
-# Usage: scripts/verify-site.sh [base-url]   (default: https://mr16666.com)
+# Public site health check — status, redirects, crawl endpoints and content
+# presence for browsers and common crawler user agents.
+# Usage: scripts/check-public-site.sh [base-url]   (default: https://mr16666.com)
 # Exits non-zero if any check fails. Does not bypass anything — it reports
 # blocking configuration (403/429/5xx, bot challenges, redirect loops).
 set -u
@@ -50,7 +51,7 @@ check_page() {
 echo "== $BASE =="
 
 echo "Homepage"
-check_page "/" "curl/verify-site" "HTL 16666" "0111056424" "canonical" "mr16666.com"
+check_page "/" "curl/check-public-site" "HTL 16666" "0111056424" "canonical" "mr16666.com"
 
 echo "HTTP -> HTTPS"
 if [[ "$BASE" == https://* ]]; then
@@ -64,13 +65,13 @@ else
 fi
 
 echo "robots.txt / sitemap.xml / llms.txt"
-check_page "/robots.txt"  "curl/verify-site" "sitemap"
-check_page "/sitemap.xml" "curl/verify-site" "mr16666.com" "/products" "/about" "/contact"
-check_page "/llms.txt"    "curl/verify-site" "0111056424"
+check_page "/robots.txt"  "curl/check-public-site" "sitemap"
+check_page "/sitemap.xml" "curl/check-public-site" "mr16666.com" "/products" "/about" "/contact"
+check_page "/llms.txt"    "curl/check-public-site" "0111056424"
 
 echo "Public pages"
 for p in /products /about /contact /privacy /terms; do
-  check_page "$p" "curl/verify-site" "HTL 16666" "0111056424"
+  check_page "$p" "curl/check-public-site" "HTL 16666" "0111056424"
 done
 
 echo "Bot user agents on /"
@@ -79,7 +80,7 @@ for ua in "Googlebot" "ClaudeBot" "bingbot"; do
 done
 
 echo "Canonical + metadata on /"
-res="$(fetch "/" "curl/verify-site")"; body="$(body_of "$res")"
+res="$(fetch "/" "curl/check-public-site")"; body="$(body_of "$res")"
 printf '%s' "$body" | grep -qa 'rel="canonical" href="https://mr16666.com/"' && ok "canonical url" || bad "canonical url missing/wrong"
 printf '%s' "$body" | grep -qai 'application/ld+json' && ok "JSON-LD present" || bad "JSON-LD missing"
 printf '%s' "$body" | grep -qai 'noindex' && bad "noindex present" || ok "no noindex"

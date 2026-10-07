@@ -1,23 +1,24 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteFooter, SiteHeader } from "@/components/site-chrome";
-import { internalWork, pageHead, products } from "@/company";
+import { internalWork, pageHead, softwareAreas } from "@/company";
 
 export const Route = createFileRoute("/products")({
-  head: () => pageHead("/products", "Products", "Software and internal tooling at HTL 16666 Media — what each does, who it is for, and where AI is used."),
+  head: () => pageHead("/products", "Software", "Software HTL 16666 Media builds and operates: CRM and business operations, social automation, and web platforms."),
   component: Products,
 });
 
-function WorkItem({ item }: { item: (typeof products)[number] | (typeof internalWork)[number] }) {
+function Area({ item }: { item: (typeof softwareAreas)[number] | (typeof internalWork)[number] }) {
   return <article>
     <div>
       <h3>{item.name}</h3>
       <span className="status">{item.status}</span>
     </div>
     <dl>
-      <div><dt>Problem</dt><dd>{item.problem}</dd></div>
-      <div><dt>Who it is for</dt><dd>{item.user}</dd></div>
-      <div><dt>What it does today</dt><dd>{item.detail}</dd></div>
-      <div><dt>Where software / AI is used</dt><dd>{item.ai}</dd></div>
+      <div><dt>What it is</dt><dd>{item.summary}</dd></div>
+      <div><dt>Who it serves</dt><dd>{item.users}</dd></div>
+      {item.capabilities.length > 0 ? (
+        <div><dt>Capability areas</dt><dd>{item.capabilities.join(" · ")}</dd></div>
+      ) : null}
     </dl>
   </article>;
 }
@@ -26,21 +27,21 @@ function Products() {
   return <main className="site-shell">
     <SiteHeader variant="solid" />
     <header className="page-head">
-      <p className="eyebrow">Products</p>
-      <h1>What we are building.</h1>
-      <p>Current products and internal tools at HTL 16666 Media.</p>
+      <p className="eyebrow">Software</p>
+      <h1>What we build and operate.</h1>
+      <p>Customer implementations and internal repositories are private; public descriptions focus on product capabilities rather than customer data or deployment details.</p>
     </header>
 
     <section className="section-pad" style={{ paddingTop: 0 }}>
       <div className="product-list">
-        {products.map((p) => <WorkItem key={p.name} item={p} />)}
+        {softwareAreas.map((s) => <Area key={s.name} item={s} />)}
       </div>
     </section>
 
     <section className="activities section-pad">
-      <div className="activities-head"><p className="eyebrow">Research & internal tooling</p><h2>Work in progress.</h2></div>
+      <div className="activities-head"><p className="eyebrow">Research & internal tooling</p><h2>In the lab.</h2></div>
       <div className="product-list">
-        {internalWork.map((w) => <WorkItem key={w.name} item={w} />)}
+        {internalWork.map((w) => <Area key={w.name} item={w} />)}
       </div>
     </section>
     <SiteFooter />

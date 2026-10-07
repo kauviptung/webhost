@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { company } from "../company";
 
 export const siteNavLinks = [
-  { to: "/products", label: "Products" },
+  { to: "/products", label: "Software" },
   { to: "/about", label: "About" },
   { to: "/contact", label: "Contact" },
 ] as const;
@@ -31,9 +31,8 @@ export function SiteFooter() {
         <p>{company.internationalName}</p>
       </div>
       <div>
+        <span>{company.legalName}</span>
         <span>Tax code {company.taxId}</span>
-        <span>Legal representative: {company.legalRepresentative}</span>
-        <span>Status: {company.status}</span>
         <a href={`mailto:${company.email}`}>{company.email}</a>
       </div>
       <nav aria-label="Footer navigation">

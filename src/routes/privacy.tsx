@@ -27,7 +27,7 @@ function Privacy() {
       <h2>If you contact us</h2>
       <p>Emailing {company.email} gives us your address and message content. We use it only to respond and conduct the business conversation it initiates.</p>
       <h2>Retention and sharing</h2>
-      <p>We do not sell or share personal data with third parties. Email correspondence is retained only as long as the business relationship requires.</p>
+      <p>We do not sell personal data. Service providers required to operate and secure the website may process limited technical information on our behalf. Email correspondence is retained only as long as the business relationship requires.</p>
       <h2>Your rights</h2>
       <p>You may request access to, correction of, or deletion of personal data you have sent us by emailing {company.email}.</p>
     </div>

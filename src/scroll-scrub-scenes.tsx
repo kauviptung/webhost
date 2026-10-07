@@ -9,17 +9,17 @@ export const scrollScrubTheme: ScrollScrubTheme = {
 };
 
 export const scrollScrubScenes: ScrollScrubScene[] = [{
-  body: "HTL 16666 Media is a Hanoi joint-stock company building software products — including the site you are reading — on top of an existing communications business.",
+  body: "HTL 16666 is a Hanoi-based communications and technology company building software for business operations, communications and automation.",
   clip: "/assets/world/htl16666-signal-film.mp4",
   id: "company",
-  kicker: "Multimedia communications · applied AI",
+  kicker: "Communications · Technology",
   label: "Company",
   mobileClip: "/assets/world/htl16666-signal-film-mobile.mp4",
   mobilePoster: "/assets/world/htl16666-signal-poster-mobile.jpg",
   poster: "/assets/world/htl16666-signal-poster.jpg",
-  tags: ["Tax code 0111056424", "Active", "Founded May 2025"],
+  tags: ["Founded 2025", "Hanoi, Vietnam"],
   title: "Software with a signal.",
-  actions: <Link to="/products">See what we build</Link>,
+  actions: <Link to="/products">What we build</Link>,
   scroll: 5.2,
   linger: 0.16,
   align: "left",

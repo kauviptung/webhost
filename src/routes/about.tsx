@@ -55,7 +55,7 @@ function About() {
     <SiteHeader variant="solid" />
     <header className="page-head">
       <p className="eyebrow">About</p>
-      <h1>One company, on the record.</h1>
+      <h1>The company.</h1>
       <p>{company.brandName} is the public face of {company.legalName} — a Hanoi-based joint-stock company operating since {company.foundingDateDisplay}.</p>
     </header>
 
@@ -64,7 +64,7 @@ function About() {
         <h2>From communications work to software.</h2>
         <div>
           <p>The company was incorporated in May 2025 with advertising as its registered primary business line, within a broad communications scope: market research, consulting, events, trade promotion and creative design.</p>
-          <p>Its public properties are built in-house — server-rendered React/TypeScript applications deployed on Vercel — and its media is produced with AI generation tooling. The codebase is developed with AI coding agents. The direction is software products for the same communications problems the company already understands.</p>
+          <p>Alongside that business it builds software for business operations, communications and automation: CRM and business-operations systems, social media automation, and web platforms. Most implementations run privately on internal or customer data; the public site itself is built in-house on a server-rendered React/TypeScript stack.</p>
         </div>
       </div>
     </section>
@@ -72,8 +72,8 @@ function About() {
     <section className="registry section-pad" id="registry">
       <div className="registry-lead">
         <p className="eyebrow">Legal identity</p>
-        <h2>Company record.</h2>
-        <p>These details match the company's public tax registration record for tax code {company.taxId}.</p>
+        <h2>Company information.</h2>
+        <p>Registration details as recorded for tax code {company.taxId}.</p>
       </div>
       <dl>{facts.map(([l,v])=><div key={l}><dt>{l}</dt><dd>{v}</dd></div>)}</dl>
     </section>

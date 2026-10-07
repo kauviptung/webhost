@@ -1,12 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { company, products } from "../company";
+import { company, internalWork, softwareAreas } from "../company";
 
 // Agent-facing site summary (https://llmstxt.org). Company facts come from
 // src/company.ts — update them there, not here.
 const body = [
   `# ${company.brandName}`,
   "",
-  `> ${company.brandName} is the public site of ${company.internationalName} — a Hanoi-based joint-stock company building software and AI-assisted products alongside its communications business (advertising, market research, consulting, events, creative design).`,
+  `> ${company.brandName} is a Hanoi-based communications and technology company building software for business operations, communications and automation — alongside an existing communications business.`,
   "",
   "## Company facts",
   "",
@@ -21,17 +21,23 @@ const body = [
   `- Email: ${company.email}`,
   `- Telephone: ${company.phoneIntl}`,
   "",
-  "## Products",
+  "## Software",
   "",
-  ...products.flatMap((p) => [`- **${p.name}** (${p.status}) — ${p.problem}`]),
+  ...softwareAreas.flatMap((s) => [`- **${s.name}** (${s.status}) — ${s.summary}`]),
   "",
-  "The company uses AI tooling in media production and software development, and builds language-model tooling for internal communications workflows.",
+  "Customer implementations and internal repositories are private; public descriptions focus on product capabilities rather than customer data or deployment details.",
+  "",
+  "## Research & internal tooling",
+  "",
+  ...internalWork.flatMap((w) => [`- **${w.name}** (${w.status}) — ${w.summary}`]),
+  "",
+  "The company uses AI tools in software development, media production and selected automation and research workflows.",
   "",
   "## Pages",
   "",
   "- [Home](/)",
-  "- [Products](/products)",
-  "- [About / legal identity](/about)",
+  "- [Software](/products)",
+  "- [About / company information](/about)",
   "- [Contact](/contact)",
   "- [Privacy](/privacy)",
   "- [Terms](/terms)",
