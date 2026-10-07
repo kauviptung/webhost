@@ -17,7 +17,7 @@ const legalFacts = [
   ["International name","HTL 16666 VIET NAM MULTIMEDIA COMMUNICATIONS JOINT STOCK COMPANY"],
   ["Short name","CÔNG TY CP TRUYỀN THÔNG ĐA PHƯƠNG TIỆN HTL 16666 VIỆT NAM"],
   ["Tax code","0111056424"],["Status","Active"],["Legal representative","HOÀNG THANH TÙNG"],
-  ["Telephone","0828716666"],["Email","support@mr16666.com"],["Operation date","19 August 2020"],
+  ["Telephone","0828716666"],["Email","support@mr16666.com"],["Operation date","19 August 2025"],
   ["Tax authority","Tax Authority Branch 11, Hanoi"],["Enterprise type","Non-state joint stock company"],
   ["Primary business line","Advertising"],
 ];

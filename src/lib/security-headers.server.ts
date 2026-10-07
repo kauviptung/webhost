@@ -18,6 +18,10 @@ export function applySecurityHeaders(response: Response): Response {
       "base-uri 'self'; form-action 'self'",
   );
   headers.set("Strict-Transport-Security", "max-age=63072000; includeSubDomains; preload");
+  // Public informational site — allow cross-origin reads so agent tools,
+  // browser-based scrapers and preview embeds can fetch it. No credentialed
+  // endpoints exist, so `*` is safe here.
+  headers.set("Access-Control-Allow-Origin", "*");
   headers.set("X-Content-Type-Options", "nosniff");
   headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
   headers.set("Permissions-Policy", "camera=(), microphone=(), geolocation=()");
