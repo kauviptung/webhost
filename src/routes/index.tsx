@@ -29,7 +29,7 @@ function Index() {
     </section>
 
     <section className="authority-strip" aria-label="Company summary">
-      <div><small>Founded</small><strong>2025</strong></div>
+      <div><small>Operating since</small><strong>2025</strong></div>
       <div><small>Based in</small><strong>Hanoi</strong></div>
       <div><small>Focus</small><strong>Software + Comms</strong></div>
       <div><small>Email</small><strong>{company.email}</strong></div>
@@ -41,7 +41,7 @@ function Index() {
         <h2>A Hanoi company building its own software.</h2>
         <div>
           <p>HTL 16666 is a communications and technology company based in Hanoi. The company runs an existing communications business — advertising, market research, consulting, events and creative design — and builds software for business operations, communications and automation on top of it.</p>
-          <p>Some of that software is public — like AgentRT, our open-source agent runtime — and some stays private because it runs on internal or customer business data.</p>
+          <p>Some of that software is public — AgentRT, an open-source agent runtime, and Research MCP, an open-source research gateway for AI agents — and some stays private because it runs on internal or customer business data.</p>
         </div>
       </div>
     </section>

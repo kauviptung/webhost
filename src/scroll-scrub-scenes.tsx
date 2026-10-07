@@ -17,7 +17,7 @@ export const scrollScrubScenes: ScrollScrubScene[] = [{
   mobileClip: "/assets/world/htl16666-signal-film-mobile.mp4",
   mobilePoster: "/assets/world/htl16666-signal-poster-mobile.jpg",
   poster: "/assets/world/htl16666-signal-poster.jpg",
-  tags: ["Founded 2025", "Hanoi, Vietnam"],
+  tags: ["Since 2025", "Hanoi, Vietnam"],
   title: "Software with a signal.",
   actions: <><Link to="/products">What we build</Link><a href="https://github.com/ducanh8888/agent_runtime" target="_blank" rel="noopener noreferrer">View AgentRT</a></>,
   scroll: 5.2,

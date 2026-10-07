@@ -3,7 +3,7 @@ import { SiteFooter, SiteHeader } from "@/components/site-chrome";
 import { internalWork, pageHead, products, softwareAreas } from "@/company";
 
 export const Route = createFileRoute("/products")({
-  head: () => pageHead("/products", "Software", "Software HTL 16666 Media builds and operates: AgentRT open-source agent runtime, CRM and business operations, social automation, and web platforms."),
+  head: () => pageHead("/products", "Software", "Software HTL 16666 Media builds and operates: AgentRT open-source agent runtime, Research MCP open-source research gateway, CRM and business operations, social automation, and web platforms."),
   component: Products,
 });
 

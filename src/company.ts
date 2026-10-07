@@ -82,6 +82,9 @@ export const organizationJsonLd = JSON.stringify({
     "MCP",
     "Developer tools",
     "AI agent infrastructure",
+    "Research infrastructure",
+    "Multi-provider search",
+    "Academic research tools",
     "Advertising",
     "Communications",
     "Market research",
@@ -112,6 +115,26 @@ export const products = [
     link: "https://github.com/ducanh8888/agent_runtime",
     linkLabel: "GitHub repository",
     note: "Claude remains the orchestrator; AgentRT runs and manages persistent worker sessions. AgentRT is developed and maintained by HTL 16666.",
+  },
+  {
+    name: "Research MCP",
+    kind: "Open-source research infrastructure",
+    status: "Open source · Active development",
+    summary:
+      "A multi-provider research gateway that gives AI agents one MCP interface to web, academic and specialist research sources.",
+    users: "Developers and AI agents that need evidence from multiple research sources.",
+    capabilities: [
+      "Multi-provider research",
+      "Concurrent source retrieval",
+      "Provenance preservation",
+      "Conservative deduplication",
+      "RRF result fusion",
+      "Web and academic research",
+      "Developer and repository search",
+    ],
+    link: "https://github.com/ducanh8888/research-mcp-engine",
+    linkLabel: "GitHub repository",
+    note: "Research MCP is developed and maintained by HTL 16666 Media.",
   },
 ] as const;
 

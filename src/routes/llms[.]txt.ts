@@ -14,7 +14,7 @@ const body = [
   `- International name: ${company.internationalName}`,
   `- Tax code: ${company.taxId}`,
   `- Status: ${company.status}`,
-  `- Founded: ${company.foundingDate} (${company.foundingDateDisplay})`,
+  `- Operating since: ${company.foundingDate} (${company.foundingDateDisplay})`,
   `- Legal representative: ${company.legalRepresentative}`,
   `- Business address: ${company.businessAddress}`,
   `- Tax registration address: ${company.taxAddress}`,
