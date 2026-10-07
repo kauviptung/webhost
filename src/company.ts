@@ -78,6 +78,10 @@ export const organizationJsonLd = JSON.stringify({
     "Business operations software",
     "Social media automation",
     "Web platforms",
+    "Agent runtimes",
+    "MCP",
+    "Developer tools",
+    "AI agent infrastructure",
     "Advertising",
     "Communications",
     "Market research",
@@ -88,24 +92,50 @@ export const organizationJsonLd = JSON.stringify({
   ],
 });
 
-// Public software taxonomy — the categories the company actually builds and
-// operates. Implementations, repositories, customer data and deployments are
-// private; descriptions stay at capability level by design.
+// Public products — things anyone can inspect or try.
+export const products = [
+  {
+    name: "AgentRT",
+    kind: "Open-source agent runtime",
+    status: "Open source · Active development",
+    summary:
+      "An MCP runtime that extends Claude Code with persistent, parallel background sub-agents.",
+    users: "Developers who need long-running parallel agent workers.",
+    capabilities: [
+      "Persistent sessions",
+      "Parallel workers",
+      "Isolated workspaces and worktrees",
+      "Artifacts and transcripts",
+      "Recovery and control",
+      "BYOK / OpenAI-compatible endpoints",
+    ],
+    link: "https://github.com/ducanh8888/agent_runtime",
+    linkLabel: "GitHub repository",
+    note: "Claude remains the orchestrator; AgentRT runs and manages persistent worker sessions. AgentRT is an open-source project maintained by the team behind HTL 16666.",
+  },
+] as const;
+
+// Software categories the company builds and operates. Implementations,
+// repositories, customer data and deployments are private; descriptions stay
+// at capability level by design.
 export const softwareAreas = [
   {
     name: "CRM & Business Operations",
     status: "Active development; private deployments",
     summary:
-      "Software for customer and contact management, sales workflows, operational records and business reporting.",
+      "Software for sales analytics, customer and contact records, staff workflows, expense approval and reporting — with read-only POS/ERP integration patterns.",
     users: "Internal operations and business customers.",
     capabilities: [
-      "Contact and account management",
-      "Sales and pipeline workflows",
-      "Operational records",
-      "Dashboards and reporting",
-      "Workflow automation",
-      "Business data integration",
+      "Sales analytics",
+      "Customer and contact records",
+      "Staff workflows",
+      "Expense approval",
+      "Reporting",
+      "Read-only POS/ERP integration patterns",
     ],
+    link: "https://demo.ducanh.cloud/",
+    linkLabel: "Open public demo",
+    note: "The demo uses simulated data and does not expose customer systems or production data.",
   },
   {
     name: "Social Automation",
@@ -120,6 +150,9 @@ export const softwareAreas = [
       "Multi-step operational workflows",
       "Assisted content processing",
     ],
+    link: null,
+    linkLabel: null,
+    note: null,
   },
   {
     name: "Web Platforms",
@@ -133,6 +166,9 @@ export const softwareAreas = [
       "Reusable web infrastructure and components",
       "Client and internal web systems",
     ],
+    link: null,
+    linkLabel: null,
+    note: null,
   },
 ] as const;
 
@@ -144,6 +180,9 @@ export const internalWork = [
     summary:
       "Internal tooling applying language-model APIs to research synthesis, drafting and translation tasks inside communications work.",
     users: "The company's own teams.",
-    capabilities: [],
+    capabilities: [] as string[],
+    link: null,
+    linkLabel: null,
+    note: null,
   },
 ] as const;

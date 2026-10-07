@@ -17,7 +17,7 @@ function Terms() {
     </header>
     <div className="prose">
       <h2>The site</h2>
-      <p>{company.domain} is operated by {company.legalName} ("{company.brandName}", tax code {company.taxId}). It presents company identification, product development status and contact information.</p>
+      <p>{company.domain} is operated by {company.legalName} ("{company.brandName}", tax code {company.taxId}). It presents information about the company, its software, services and contact details.</p>
       <h2>Accuracy</h2>
       <p>Company registration data shown here is intended to match the public tax record for tax code {company.taxId}. Product descriptions describe work in progress and do not constitute commercial offers, availability commitments or performance guarantees.</p>
       <h2>Intellectual property</h2>

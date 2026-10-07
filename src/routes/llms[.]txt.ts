@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { company, internalWork, softwareAreas } from "../company";
+import { company, internalWork, products, softwareAreas } from "../company";
 
 // Agent-facing site summary (https://llmstxt.org). Company facts come from
 // src/company.ts — update them there, not here.
@@ -23,7 +23,8 @@ const body = [
   "",
   "## Software",
   "",
-  ...softwareAreas.flatMap((s) => [`- **${s.name}** (${s.status}) — ${s.summary}`]),
+  ...products.flatMap((p) => [`- **${p.name}** (${p.status}) — ${p.summary} ${p.link}`]),
+  ...softwareAreas.flatMap((s) => [`- **${s.name}** (${s.status}) — ${s.summary}${s.link ? ` Public demo: ${s.link}` : ""}`]),
   "",
   "Customer implementations and internal repositories are private; public descriptions focus on product capabilities rather than customer data or deployment details.",
   "",

@@ -1,17 +1,23 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteFooter, SiteHeader } from "@/components/site-chrome";
-import { internalWork, pageHead, softwareAreas } from "@/company";
+import { internalWork, pageHead, products, softwareAreas } from "@/company";
 
 export const Route = createFileRoute("/products")({
-  head: () => pageHead("/products", "Software", "Software HTL 16666 Media builds and operates: CRM and business operations, social automation, and web platforms."),
+  head: () => pageHead("/products", "Software", "Software HTL 16666 Media builds and operates: AgentRT open-source agent runtime, CRM and business operations, social automation, and web platforms."),
   component: Products,
 });
 
-function Area({ item }: { item: (typeof softwareAreas)[number] | (typeof internalWork)[number] }) {
+type Item = (typeof products)[number] | (typeof softwareAreas)[number] | (typeof internalWork)[number];
+
+function Area({ item }: { item: Item }) {
   return <article>
     <div>
       <h3>{item.name}</h3>
+      {"kind" in item && item.kind ? <span className="status">{item.kind}</span> : null}{" "}
       <span className="status">{item.status}</span>
+      {item.link ? (
+        <a className="work-link" href={item.link} target="_blank" rel="noopener noreferrer">{item.linkLabel}</a>
+      ) : null}
     </div>
     <dl>
       <div><dt>What it is</dt><dd>{item.summary}</dd></div>
@@ -19,6 +25,7 @@ function Area({ item }: { item: (typeof softwareAreas)[number] | (typeof interna
       {item.capabilities.length > 0 ? (
         <div><dt>Capability areas</dt><dd>{item.capabilities.join(" · ")}</dd></div>
       ) : null}
+      {item.note ? <div><dt>Note</dt><dd>{item.note}</dd></div> : null}
     </dl>
   </article>;
 }
@@ -34,6 +41,7 @@ function Products() {
 
     <section className="section-pad" style={{ paddingTop: 0 }}>
       <div className="product-list">
+        {products.map((p) => <Area key={p.name} item={p} />)}
         {softwareAreas.map((s) => <Area key={s.name} item={s} />)}
       </div>
     </section>

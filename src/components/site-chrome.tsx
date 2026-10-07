@@ -42,7 +42,7 @@ export function SiteFooter() {
         <Link to="/privacy">Privacy</Link>
         <Link to="/terms">Terms</Link>
       </nav>
-      <p>© 2026 {company.brandName}. Corporate information presented for entity identification and communications purposes.</p>
+      <p>© 2026 {company.brandName}.</p>
     </footer>
   );
 }

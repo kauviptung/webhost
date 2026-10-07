@@ -19,7 +19,7 @@ export const scrollScrubScenes: ScrollScrubScene[] = [{
   poster: "/assets/world/htl16666-signal-poster.jpg",
   tags: ["Founded 2025", "Hanoi, Vietnam"],
   title: "Software with a signal.",
-  actions: <Link to="/products">What we build</Link>,
+  actions: <><Link to="/products">What we build</Link><a href="https://github.com/ducanh8888/agent_runtime" target="_blank" rel="noopener noreferrer">View AgentRT</a></>,
   scroll: 5.2,
   linger: 0.16,
   align: "left",

@@ -63,7 +63,7 @@ function About() {
       <div className="intro-grid">
         <h2>From communications work to software.</h2>
         <div>
-          <p>The company was incorporated in May 2025 with advertising as its registered primary business line, within a broad communications scope: market research, consulting, events, trade promotion and creative design.</p>
+          <p>The company has operated since May 2025, with advertising as its registered primary business line, within a broad communications scope: market research, consulting, events, trade promotion and creative design.</p>
           <p>Alongside that business it builds software for business operations, communications and automation: CRM and business-operations systems, social media automation, and web platforms. Most implementations run privately on internal or customer data; the public site itself is built in-house on a server-rendered React/TypeScript stack.</p>
         </div>
       </div>

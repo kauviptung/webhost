@@ -83,6 +83,7 @@ footer strong{color:var(--paper);font-family:var(--display);font-size:1.2rem;tex
 .page-head{padding:clamp(4rem,9vw,8rem) var(--x) clamp(3rem,6vw,5rem);background:var(--paper)}
 .page-head h1{max-width:16ch;margin:0;font-family:var(--display);font-size:clamp(3.2rem,8.5vw,8.5rem);font-weight:800;letter-spacing:-.05em;line-height:.86;text-transform:uppercase}
 .page-head>p{max-width:46rem;margin:2.2rem 0 0;color:#394542;font-size:clamp(1.05rem,1.5vw,1.3rem);line-height:1.55}
+.scroll-scrub__actions{display:flex;gap:1rem;flex-wrap:wrap}
 .scroll-scrub__actions a{display:inline-block;margin-top:1.9rem;padding:.85rem 1.5rem;border:1px solid var(--paper);color:var(--paper);font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;text-decoration:none}
 .scroll-scrub__actions a:hover{background:var(--paper);color:var(--green)}
 .product-list{border-top:1px solid var(--line)}
@@ -96,6 +97,8 @@ footer strong{color:var(--paper);font-family:var(--display);font-size:1.2rem;tex
 .prose h2{margin:2.6rem 0 .7rem;font-family:var(--display);font-size:1.5rem;text-transform:uppercase}
 .prose h2:first-child{margin-top:0}.prose p,.prose li{color:#394542}
 .prose ul{padding-left:1.3rem}
+.cap-link{display:inline-block;margin-left:.6rem;padding-bottom:.15rem;border-bottom:1px solid var(--accent);color:var(--paper);font-size:.7rem;font-weight:800;letter-spacing:.08em;text-decoration:none;text-transform:uppercase;white-space:nowrap}
+.work-link{display:inline-block;margin-top:.8rem;padding-bottom:.2rem;border-bottom:2px solid var(--accent);color:var(--ink);font-size:.72rem;font-weight:800;letter-spacing:.06em;text-decoration:none;text-transform:uppercase}
 .section-top--end{justify-content:flex-end;margin:2.2rem 0 0}
 .section-top a{padding-bottom:.3rem;border-bottom:2px solid var(--accent);color:var(--paper);font-size:.78rem;font-weight:800;letter-spacing:.04em;text-decoration:none;text-transform:uppercase}
 footer nav{display:flex;flex-wrap:wrap;gap:1.2rem;align-content:start}

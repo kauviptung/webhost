@@ -3,10 +3,10 @@ import { ScrollScrub } from "@/components/scroll-scrub/scroll-scrub";
 import { StructuredData } from "@/components/StructuredData";
 import { SiteFooter, SiteHeader } from "@/components/site-chrome";
 import { scrollScrubScenes, scrollScrubTheme } from "@/scroll-scrub-scenes";
-import { company, organizationJsonLd, pageHead, softwareAreas } from "@/company";
+import { company, organizationJsonLd, pageHead, products, softwareAreas } from "@/company";
 
 export const Route = createFileRoute("/")({
-  head: () => pageHead("/", company.brandName, "HTL 16666 is a Hanoi-based communications and technology company building CRM, automation and web software alongside its communications business."),
+  head: () => pageHead("/", company.brandName, "Hanoi-based communications and technology company building CRM, automation, web software and open-source developer tools."),
   component: Index,
 });
 
@@ -41,7 +41,7 @@ function Index() {
         <h2>A Hanoi company building its own software.</h2>
         <div>
           <p>HTL 16666 is a communications and technology company based in Hanoi. The company runs an existing communications business — advertising, market research, consulting, events and creative design — and builds software for business operations, communications and automation on top of it.</p>
-          <p>That software work is concrete: CRM and business-operations systems, social media automation, and web platforms — including this site, built and operated by the company itself.</p>
+          <p>Some of that software is public — like AgentRT, our open-source agent runtime — and some stays private because it runs on internal or customer business data.</p>
         </div>
       </div>
     </section>
@@ -49,11 +49,11 @@ function Index() {
     <section className="capabilities section-pad" id="software">
       <div className="section-top"><p className="eyebrow">Software</p><span>Systems the company builds and operates.</span></div>
       <div className="cap-list">
-        {softwareAreas.map((s, i) => (
+        {[...products, ...softwareAreas].map((s, i) => (
           <article key={s.name}>
             <span>{String(i + 1).padStart(2, "0")}</span>
             <h3>{s.name}</h3>
-            <p>{s.summary}</p>
+            <p>{s.summary}{" "}{s.link ? <a className="cap-link" href={s.link} target="_blank" rel="noopener noreferrer">{s.linkLabel}</a> : null}</p>
           </article>
         ))}
       </div>
@@ -65,7 +65,7 @@ function Index() {
       <div className="intro-grid">
         <h2>Software development, automation, and AI where it helps.</h2>
         <div>
-          <p>We use AI tools in software development, media production and selected automation and research workflows. The film in the hero above is AI-generated, and this site was built with AI coding agents.</p>
+          <p>Claude Code and other AI coding tools are part of our software development workflow; AI tools are also used in media production and selected automation and research workflows. The film in the hero above is AI-generated.</p>
           <p>Most software implementations are private because they operate on internal or customer business data.</p>
         </div>
       </div>
