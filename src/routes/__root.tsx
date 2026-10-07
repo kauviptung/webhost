@@ -4,6 +4,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportHiggsfieldError } from "../lib/higgsfield-error-reporting";
 import appMetaJson from "../app-meta.json";
+import { company } from "../company";
 
 declare const __HF_DESIGN_INSPECTOR__: boolean;
 type AppMeta = { og_title?: string|null; og_description?: string|null; og_image_url?: string|null; favicon_url?: string|null; og_video_url?: string|null; marketplace_cover_url?: string|null };
@@ -12,7 +13,7 @@ const appMeta = appMetaJson as AppMeta;
 function buildHead(meta: AppMeta) {
   const title = meta.og_title ?? "HTL 16666 Media";
   const description = meta.og_description ?? "HTL 16666 Media, a multimedia communications joint stock company in Hanoi, Vietnam.";
-  const siteUrl = ((import.meta.env.VITE_SITE_URL as string | undefined) ?? "https://htl16666-media.higgsfield.app").replace(/\/+$/, "");
+  const siteUrl = ((import.meta.env.VITE_SITE_URL as string | undefined) ?? company.url).replace(/\/+$/, "");
   const ogImage = meta.og_image_url ? (meta.og_image_url.startsWith("/") ? siteUrl + meta.og_image_url : meta.og_image_url) : null;
   const favicon = meta.favicon_url ?? null;
   return {
@@ -31,6 +32,7 @@ function buildHead(meta: AppMeta) {
       { name: "twitter:description", content: description },
       ...(ogImage ? [{ property: "og:image", content: ogImage }, { name: "twitter:image", content: ogImage }] : []),
       { name: "theme-color", content: "darkslategray" },
+      { name: "robots", content: "index, follow" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
