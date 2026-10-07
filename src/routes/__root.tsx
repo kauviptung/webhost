@@ -44,7 +44,7 @@ function buildHead(meta: AppMeta) {
 function NotFoundComponent() {
   return <main className="system-page"><p className="system-code">404</p><h1>Page not found.</h1><a href="/">Return to HTL 16666 Media</a></main>;
 }
-function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
+function ErrorComponent({ error, reset }: { error: unknown; reset: () => void }) {
   console.error(error);
   const router = useRouter();
   useEffect(() => { reportHiggsfieldError(error, { boundary: "tanstack_root_error_component" }); }, [error]);
